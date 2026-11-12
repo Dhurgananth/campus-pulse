@@ -594,37 +594,69 @@ class Handler(BaseHTTPRequestHandler):
         self.do_GET()
 
     def do_GET(self):
-        url = urlparse(self.path)
-        path = url.path
-        if not self._is_admin() and not self._public_get_ok(path):
-            if path in ("/", "/index.html"):
-                self.send_response(302)
-                self.send_header("Location", "/form")
-                self.send_header("Content-Length", "0")
-                self.end_headers()
-                return
-            return self._json(404, {"ok": False, "error": "Not found"})
-        if path in ("/", "/index.html", "/form", "/form/"):
-            return self._static("index.html")
-        if path == "/favicon.ico" or path == "/favicon.svg":
-            return self._static("favicon.svg")
-        if path.startswith("/static/"):
-            return self._static(path[len("/static/"):])
-        if path == "/api/schema":
-            return self._send(200, SCHEMA_JSON, "application/json; charset=utf-8")
-        if path == "/api/data":
-            return self._json(200, STORE.snapshot())
-        if path == "/api/export.csv":
-            q = parse_qs(url.query)
-            inc = q.get("demo", ["0"])[0] == "1"
-            name = f"campus-pulse-{datetime.now():%Y%m%d-%H%M}{'-with-demo' if inc else ''}.csv"
-            return self._send(200, STORE.export_csv(inc), "text/csv; charset=utf-8",
-                              {"Content-Disposition": f'attachment; filename="{name}"'})
-        if path == "/api/stream":
-            return self._stream()
-        if path == "/healthz":
-            return self._json(200, {"ok": True})
-        return self._json(404, {"ok": False, "error": "Not found"})
+      url = urlparse(self.path)
+      path = url.path
+
+    # Public dashboard, volunteer form and read-only APIs
+      if path in (
+        "/", "/index.html",
+        "/form", "/form/",
+        "/favicon.ico", "/favicon.svg",
+        "/api/schema", "/api/data",
+        "/api/stream", "/healthz"
+    ) or path.startswith("/static/"):
+        pass
+      else:
+        # Keep CSV export restricted
+        if not self._is_admin():
+            return self._json(403, {
+                "ok": False,
+                "error": "Not allowed."
+            })
+
+      if path in ("/", "/index.html", "/form", "/form/"):
+        return self._static("index.html")
+
+      if path in ("/favicon.ico", "/favicon.svg"):
+        return self._static("favicon.svg")
+
+      if path.startswith("/static/"):
+        return self._static(path[len("/static/"):])
+
+      if path == "/api/schema":
+        return self._send(
+            200, SCHEMA_JSON,
+            "application/json; charset=utf-8"
+        )
+
+      if path == "/api/data":
+        return self._json(200, STORE.snapshot())
+
+      if path == "/api/export.csv":
+        q = parse_qs(url.query)
+        inc = q.get("demo", ["0"])[0] == "1"
+        name = (
+            f"campus-pulse-{datetime.now():%Y%m%d-%H%M}"
+            f"{'-with-demo' if inc else ''}.csv"
+        )
+        return self._send(
+            200,
+            STORE.export_csv(inc),
+            "text/csv; charset=utf-8",
+            {"Content-Disposition": f'attachment; filename="{name}"'}
+        )
+
+      if path == "/api/stream":
+        return self._stream()
+
+      if path == "/healthz":
+        return self._json(200, {"ok": True})
+
+      return self._json(404, {
+        "ok": False,
+        "error": "Not found"
+    })
+
 
     def do_POST(self):
         path = urlparse(self.path).path

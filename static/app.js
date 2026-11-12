@@ -1044,42 +1044,524 @@ function showSummary(msg, net = false) {
 }
 async function onSubmit(e) {
   e.preventDefault();
-  if (FORM.busy || e.repeat) return;                       // double-click / key-repeat guard
+
+  if (FORM.busy || e.repeat) return;
+
   FORM.attempted = true;
+
   const bad = S.schema.fields.filter(f => !fieldCheck(f));
+
   if (bad.length) {
-    showSummary(bad.length === 1 ? 'One question still needs an answer.' : `${bad.length} questions still need an answer.`);
-    $('#f_' + bad[0].key).focus(); return;
+    showSummary(
+      bad.length === 1
+        ? 'One question still needs an answer.'
+        : `${bad.length} questions still need an answer.`
+    );
+
+    $('#f_' + bad[0].key).focus();
+    return;
   }
+
   $('#formSummary').hidden = true;
   FORM.busy = true;
-  const btn = $('#btnSubmit'); btn.classList.add('busy'); btn.setAttribute('aria-busy', 'true'); $('.lbl', btn).textContent = 'Submitting…';
-  const answers = Object.fromEntries(S.schema.fields.map(f => [f.key, $('#f_' + f.key).value]));
+
+  const btn = $('#btnSubmit');
+  btn.classList.add('busy');
+  btn.setAttribute('aria-busy', 'true');
+  $('.lbl', btn).textContent = 'Submitting…';
+
+  const answers = Object.fromEntries(
+    S.schema.fields.map(f => [f.key, $('#f_' + f.key).value])
+  );
+
   let ok = false;
+
   try {
-    const r = await fetch('/api/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key: FORM.key, answers }) });
+    const r = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: FORM.key, answers })
+    });
+
     const d = await r.json();
+
     if (r.status === 422 && d.errors) {
-      Object.entries(d.errors).forEach(([k, m]) => { const box = $(`.field[data-key="${k}"]`); if (box) { box.classList.add('bad'); $('.err', box).textContent = m; } });
-      showSummary('Some answers were not accepted. Please check the highlighted questions.');
-    } else if (!r.ok) throw new Error('Server error');
-    else {
+      Object.entries(d.errors).forEach(([k, m]) => {
+        const box = $(`.field[data-key="${k}"]`);
+        if (box) {
+          box.classList.add('bad');
+          $('.err', box).textContent = m;
+        }
+      });
+
+      showSummary(
+        'Some answers were not accepted. Please check the highlighted questions.'
+      );
+
+    } else if (!r.ok) {
+      throw new Error('Server error');
+
+    } else {
       ok = true;
-      if (d.duplicate) toast({ msg: 'This response was already recorded — no duplicate added.', ok: true, ttl: 3500 });
-      else toast({ msg: `Response ${d.id} recorded`, ok: true, ttl: formOnly ? 3500 : 8000, action: formOnly ? undefined : { label: 'Undo', fn: () => undo(d.id) } });
+
+      if (d.duplicate) {
+        toast({
+          msg: 'This response was already recorded — no duplicate added.',
+          ok: true,
+          ttl: 3500
+        });
+      } else {
+        toast({
+          msg: `Response ${d.id} recorded`,
+          ok: true,
+          ttl: formOnly ? 3500 : 8000,
+          action: formOnly
+            ? undefined
+            : { label: 'Undo', fn: () => undo(d.id) }
+        });
+      }
     }
+
   } catch (err) {
-    showSummary('Could not reach the server. Your answers are still here — check the connection and press Submit again.', true);
+    showSummary(
+      'Could not reach the server. Your answers are still here — check the connection and press Submit again.',
+      true
+    );
   }
+
   btn.removeAttribute('aria-busy');
+
   if (ok) {
-    btn.classList.remove('busy'); btn.classList.add('done'); $('.lbl', btn).textContent = 'Recorded ✓';
+    btn.classList.remove('busy');
+    btn.classList.add('done');
+    $('.lbl', btn).textContent = 'Recorded ✓';
+
     setTimeout(() => {
-      FORM.busy = false; resetForm();
-      if ($('#keepOpen').checked || formOnly) focusFirst(); else closeForm();
+      FORM.busy = false;
+
+      if (formOnly) {
+        // Volunteer form: show jumping character celebration
+        dlg.close();
+        showThankYou();
+      } else {
+        // Dashboard: preserve existing behaviour
+        resetForm();
+
+        if ($('#keepOpen').checked) {
+          focusFirst();
+        } else {
+          closeForm();
+        }
+      }
+
     }, 650);
-  } else { btn.classList.remove('busy'); $('.lbl', btn).textContent = 'Submit Response'; setTimeout(() => { FORM.busy = false; }, 400); }
+
+  } else {
+    btn.classList.remove('busy');
+    $('.lbl', btn).textContent = 'Submit Response';
+
+    setTimeout(() => {
+      FORM.busy = false;
+    }, 400);
+  }
 }
+
+
+function showThankYou() {
+  // Prevent duplicate celebration screens
+  document.querySelector('.cp-thankyou')?.remove();
+  document.querySelector('#cp-thankyou-style')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'cp-thankyou';
+
+  overlay.innerHTML = `
+    <div class="cp-ty-confetti confetti-1">🎉</div>
+    <div class="cp-ty-confetti confetti-2">✨</div>
+    <div class="cp-ty-confetti confetti-3">🎊</div>
+    <div class="cp-ty-confetti confetti-4">💫</div>
+    <div class="cp-ty-confetti confetti-5">⭐</div>
+
+    <main class="cp-ty-layout">
+
+      <section class="cp-ty-character-area">
+        <div class="cp-ty-glow"></div>
+
+        <img
+          class="cp-ty-character"
+          src="/static/images/celebration-boy.png"
+          alt="Happy cartoon boy jumping with excitement"
+        />
+
+        <div class="cp-ty-ground-shadow"></div>
+      </section>
+
+      <section class="cp-ty-message">
+        <div class="cp-ty-brand">
+          <span class="cp-ty-heartbeat">♡</span>
+          CAMPUS <span>PULSE</span>
+        </div>
+
+        <h1>Thank You!</h1>
+        <div class="cp-ty-underline"></div>
+
+        <div class="cp-ty-confirmation">
+          <span class="cp-ty-check">✓</span>
+          <span>
+            Your response has been<br>
+            successfully submitted!
+          </span>
+        </div>
+
+        <p class="cp-ty-love">♡ Your voice matters! ♡</p>
+
+        <button class="cp-ty-again" type="button">
+          <span>＋</span> Submit another response
+        </button>
+
+        <p class="cp-ty-footer">
+          WHAT CAMPUS THINKS. WHAT CAMPUS DOES.
+        </p>
+      </section>
+
+    </main>
+  `;
+
+  const style = document.createElement('style');
+  style.id = 'cp-thankyou-style';
+
+  style.textContent = `
+    .cp-thankyou {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      box-sizing: border-box;
+      color: #fff;
+      background:
+        radial-gradient(ellipse at 23% 50%, #551321 0%, transparent 48%),
+        radial-gradient(ellipse at 80% 45%, #2d0b14 0%, transparent 55%),
+        #090609;
+      font-family: inherit;
+      animation: cpTYFade .5s ease both;
+    }
+
+    .cp-thankyou *,
+    .cp-thankyou *::before,
+    .cp-thankyou *::after {
+      box-sizing: border-box;
+    }
+
+    .cp-ty-layout {
+      width: min(1150px, 94%);
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      align-items: center;
+      gap: 35px;
+      padding: 25px;
+    }
+
+    /* CHARACTER AREA */
+
+    .cp-ty-character-area {
+      min-width: 0;
+      height: min(75vh, 570px);
+      min-height: 350px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cp-ty-glow {
+      position: absolute;
+      width: 75%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #ff294b35;
+      filter: blur(65px);
+      animation: cpTYGlow 2s ease-in-out infinite alternate;
+    }
+
+    .cp-ty-character {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 450px;
+      object-fit: contain;
+
+      /* THIS ANIMATES THE CHARACTER ITSELF */
+      animation: cpTYJump 1.15s cubic-bezier(.45, 0, .55, 1) infinite;
+      transform-origin: center bottom;
+      will-change: transform;
+    }
+
+    .cp-ty-ground-shadow {
+      position: absolute;
+      bottom: 4%;
+      width: 48%;
+      height: 22px;
+      border-radius: 50%;
+      background: #ff344e;
+      filter: blur(17px);
+      animation: cpTYShadow 1.15s ease-in-out infinite;
+    }
+
+    /* TEXT AREA */
+
+    .cp-ty-message {
+      text-align: center;
+      min-width: 0;
+    }
+
+    .cp-ty-brand {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      margin-bottom: 28px;
+    }
+
+    .cp-ty-brand span:last-child {
+      color: #ff405b;
+    }
+
+    .cp-ty-heartbeat {
+      color: #ff405b;
+      font-size: 28px;
+      margin-right: 8px;
+    }
+
+    .cp-ty-message h1 {
+      color: #fff;
+      font-size: clamp(43px, 7vw, 78px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin: 0;
+    }
+
+    .cp-ty-underline {
+      width: 190px;
+      height: 7px;
+      margin: 15px auto 32px;
+      border-radius: 20px;
+      background: #ff405b;
+      transform: rotate(-2deg);
+    }
+
+    .cp-ty-confirmation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 17px;
+      padding: 20px;
+      border: 2px solid #ff536b;
+      border-radius: 28px;
+      background: #ff34480c;
+      font-size: clamp(15px, 2vw, 21px);
+      line-height: 1.5;
+    }
+
+    .cp-ty-check {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #f32d48;
+      font-size: 29px;
+      font-weight: 900;
+    }
+
+    .cp-ty-love {
+      color: #ffb5be;
+      font-size: 24px;
+      font-style: italic;
+      margin: 28px 0;
+    }
+
+    .cp-ty-again {
+      width: 100%;
+      max-width: 430px;
+      padding: 18px 20px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(110deg, #ff5365, #e91e3d);
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 35px #f3264050;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .cp-ty-again:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px #f3264070;
+    }
+
+    .cp-ty-footer {
+      margin-top: 32px;
+      color: #99909a;
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    /* CONFETTI */
+
+    .cp-ty-confetti {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      font-size: 28px;
+      animation: cpTYConfetti 2.5s ease-in-out infinite;
+    }
+
+    .confetti-1 { left: 7%; top: 20%; }
+    .confetti-2 { left: 42%; top: 12%; animation-delay: .3s; }
+    .confetti-3 { right: 8%; top: 25%; animation-delay: .7s; }
+    .confetti-4 { left: 12%; bottom: 15%; animation-delay: 1s; }
+    .confetti-5 { right: 15%; bottom: 15%; animation-delay: 1.3s; }
+
+    /* JUMP ANIMATION */
+
+    @keyframes cpTYJump {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+
+      20% {
+        transform: translateY(-18px) rotate(-3deg) scale(1.02);
+      }
+
+      45% {
+        transform: translateY(-65px) rotate(4deg) scale(1.04);
+      }
+
+      60% {
+        transform: translateY(-68px) rotate(-3deg) scale(1.04);
+      }
+
+      80% {
+        transform: translateY(-12px) rotate(2deg) scale(1.01);
+      }
+    }
+
+    @keyframes cpTYShadow {
+      0%, 100% {
+        transform: scaleX(1);
+        opacity: .85;
+      }
+
+      50% {
+        transform: scaleX(.55);
+        opacity: .3;
+      }
+    }
+
+    @keyframes cpTYGlow {
+      from { opacity: .5; transform: scale(.9); }
+      to { opacity: 1; transform: scale(1.1); }
+    }
+
+    @keyframes cpTYConfetti {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(35px) rotate(25deg); }
+    }
+
+    @keyframes cpTYFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      .cp-ty-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 12px;
+      }
+
+      .cp-ty-character-area {
+        height: 32vh;
+        min-height: 190px;
+      }
+
+      .cp-ty-character {
+        max-width: 250px;
+      }
+
+      .cp-ty-message h1 {
+        font-size: 44px;
+      }
+
+      .cp-ty-brand {
+        font-size: 15px;
+        margin-bottom: 12px;
+      }
+
+      .cp-ty-underline {
+        margin: 10px auto 18px;
+      }
+
+      .cp-ty-confirmation {
+        padding: 13px;
+        border-radius: 20px;
+      }
+
+      .cp-ty-love {
+        font-size: 19px;
+        margin: 17px 0;
+      }
+
+      .cp-ty-again {
+        padding: 15px;
+        font-size: 15px;
+      }
+
+      .cp-ty-footer {
+        margin-top: 18px;
+        font-size: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cp-ty-character,
+      .cp-ty-ground-shadow,
+      .cp-ty-glow,
+      .cp-ty-confetti {
+        animation: none !important;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
+  document.body.appendChild(overlay);
+
+  // Open a fresh survey when the volunteer clicks the button
+  overlay.querySelector('.cp-ty-again').addEventListener('click', () => {
+    overlay.remove();
+    style.remove();
+
+    resetForm();
+
+    if (!dlg.open) {
+      dlg.showModal();
+    }
+
+    focusFirst();
+  });
+}
+
 async function undo(id) {
   try {
     const r = await fetch('/api/undo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });

@@ -1,0 +1,63 @@
+﻿response_id,timestamp,state,social_hours,social_platform,sleep,ai_platform,activity,food,entertainment,transport,career,submission_key
+R-0001,2026-11-11T15:28:25+05:30,Tamil Nadu,Below 1 Hour,Instagram,7–8 Hours,Google Gemini,Gym / Workout,Non-Vegetarian,Music,Two-Wheeler,Data Science & Artificial Intelligence,kljhntdt1158mwby3ceo
+R-0002,2026-11-11T15:28:33+05:30,Telangana,2–4 Hours,Instagram,7–8 Hours,ChatGPT,Walking,Vegetarian,Movies,Walking,Data Science & Artificial Intelligence,k85k86vaz0g5mwby311x
+R-0003,2026-11-11T15:28:36+05:30,Uttar Pradesh,4–6 Hours,YouTube,5–6 Hours,ChatGPT,Gym / Workout,Eggetarian,Web Series,Two-Wheeler,Creative Fields,ky6aip5zdibmwby3sno
+R-0004,2026-11-11T15:28:55+05:30,Karnataka,Above 6 Hours,Other,5–6 Hours,Claude,Gym / Workout,Non-Vegetarian,Music,Walking,Data Science & Artificial Intelligence,k2aqzp7l6rbnmwby3oe1
+R-0005,2026-11-11T15:28:57+05:30,Tamil Nadu,2–4 Hours,Other,6–7 Hours,ChatGPT,Walking,Non-Vegetarian,Movies,Walking,Business & Management,km3xrmbdi2ylmwby3qod
+R-0006,2026-11-11T15:28:58+05:30,Karnataka,2–4 Hours,Instagram,7–8 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Movies,Two-Wheeler,Data Science & Artificial Intelligence,keephqssbzfrmwby61up
+R-0007,2026-11-11T15:29:04+05:30,Tamil Nadu,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Other,Walking,Data Science & Artificial Intelligence,kq8qpl4ii5ljmwby3n1x
+R-0008,2026-11-11T15:29:05+05:30,Karnataka,1–2 Hours,Instagram,6–7 Hours,Claude,Yoga,Non-Vegetarian,Social Media,Two-Wheeler,Data Science & Artificial Intelligence,k94c1i8jooamwby3n7c
+R-0009,2026-11-11T15:29:06+05:30,Gujarat,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Walking,Vegetarian,Music,Walking,Data Science & Artificial Intelligence,k7asw0f7ayk7mwby396q
+R-0010,2026-11-11T15:29:19+05:30,Tamil Nadu,Below 1 Hour,Instagram,6–7 Hours,ChatGPT,Running,Non-Vegetarian,Reading,Metro,Government Services,kpwmfxyqd4omwby4ns4
+R-0011,2026-11-11T15:29:21+05:30,Kerala,2–4 Hours,Instagram,7–8 Hours,ChatGPT,Walking,Non-Vegetarian,Web Series,Walking,Data Science & Artificial Intelligence,k97uunn74jbdmwby3v4w
+R-0012,2026-11-11T15:29:25+05:30,Tamil Nadu,Below 1 Hour,Instagram,6–7 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Sports,Walking,Data Science & Artificial Intelligence,kzfpsao4yubmwby3prf
+R-0013,2026-11-11T15:29:37+05:30,Maharashtra,2–4 Hours,Instagram,5–6 Hours,ChatGPT,Walking,Non-Vegetarian,Other,Walking,Data Science & Artificial Intelligence,kiqtisqwo7qlmwby3qwi
+R-0014,2026-11-11T15:29:45+05:30,Kerala,2–4 Hours,Instagram,Below 5 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Sports,Walking,Data Science & Artificial Intelligence,k1udwopw6ftzmwby3q3e
+R-0015,2026-11-11T15:29:46+05:30,Karnataka,Above 6 Hours,Instagram,7–8 Hours,ChatGPT,Sports,Non-Vegetarian,Movies,Car,Business & Management,ktgor5qffx5hmwby53ix
+R-0016,2026-11-11T15:29:48+05:30,Haryana,1–2 Hours,Instagram,Below 5 Hours,ChatGPT,Walking,Non-Vegetarian,Music,Two-Wheeler,Data Science & Artificial Intelligence,kbdpycl83xthmwby3smi
+R-0017,2026-11-11T15:29:53+05:30,Karnataka,1–2 Hours,WhatsApp,6–7 Hours,ChatGPT,Walking,Vegetarian,Movies,Metro,Data Science & Artificial Intelligence,ka053pame7mmwby4pp7
+R-0018,2026-11-11T15:30:04+05:30,Kerala,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Walking,Non-Vegetarian,Movies,Metro,Data Science & Artificial Intelligence,k5h5ip7sblzdmwby3t8r
+R-0019,2026-11-11T15:30:07+05:30,Madhya Pradesh,Above 6 Hours,Instagram,5–6 Hours,ChatGPT,Other,Non-Vegetarian,Social Media,Two-Wheeler,Creative Fields,koaw23qkz05cmwby5gb6
+R-0020,2026-11-11T15:30:07+05:30,Tamil Nadu,1–2 Hours,Instagram,Below 5 Hours,ChatGPT,No Regular Physical Activity,Non-Vegetarian,Movies,Walking,Data Science & Artificial Intelligence,kgsrad9wmhcumwby41th
+R-0021,2026-11-11T15:30:16+05:30,Karnataka,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Other,Non-Vegetarian,Music,Bus,Research & Academia,klsrx32al9xmmwby3u8k
+R-0022,2026-11-11T15:30:16+05:30,Goa,Above 6 Hours,LinkedIn,Above 8 Hours,Don't Use AI,No Regular Physical Activity,Non-Vegetarian,Web Series,Metro,Business & Management,khdwt6mfq6kqmwby5ppy
+R-0023,2026-11-11T15:30:19+05:30,Maharashtra,2–4 Hours,Instagram,5–6 Hours,ChatGPT,Running,Non-Vegetarian,Web Series,Walking,Data Science & Artificial Intelligence,khkhcnv73hrtmwby3m8v
+R-0024,2026-11-11T15:30:19+05:30,Kerala,1–2 Hours,Instagram,5–6 Hours,ChatGPT,Other,Non-Vegetarian,Movies,Walking,Data Science & Artificial Intelligence,k815a1q4m46hmwby586l
+R-0025,2026-11-11T15:30:22+05:30,Karnataka,1–2 Hours,Instagram,7–8 Hours,Google Gemini,Running,Non-Vegetarian,Gaming,Bus,Government Services,ker7txe2w2a6mwby618i
+R-0026,2026-11-11T15:30:24+05:30,Tamil Nadu,2–4 Hours,YouTube,7–8 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Movies,Walking,Data Science & Artificial Intelligence,kvkc6yiyk9tkmwby6iur
+R-0027,2026-11-11T15:30:37+05:30,West Bengal,2–4 Hours,Instagram,5–6 Hours,ChatGPT,Walking,Non-Vegetarian,Web Series,Walking,IT & Software Development,k88kei5gjxc6mwby5ult
+R-0028,2026-11-11T15:30:39+05:30,Karnataka,4–6 Hours,LinkedIn,Above 8 Hours,Claude,Yoga,Eggetarian,Reading,Car,Finance & Banking,k99lthadcsrvmwby648h
+R-0029,2026-11-11T15:30:50+05:30,Tamil Nadu,2–4 Hours,Instagram,6–7 Hours,ChatGPT,No Regular Physical Activity,Non-Vegetarian,Web Series,Two-Wheeler,Data Science & Artificial Intelligence,kc6w87ns8p7lmwby4ohv
+R-0030,2026-11-11T15:30:52+05:30,Kerala,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Movies,Walking,Data Science & Artificial Intelligence,kgt9y0m6s625mwby692m
+R-0031,2026-11-11T15:30:52+05:30,Kerala,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Gaming,Walking,Data Science & Artificial Intelligence,kzz2clk7swu9mwby4ayg
+R-0032,2026-11-11T15:30:54+05:30,Telangana,1–2 Hours,Instagram,6–7 Hours,Google Gemini,No Regular Physical Activity,Non-Vegetarian,Music,Walking,Data Science & Artificial Intelligence,knl0l9hczzjemwby4fek
+R-0033,2026-11-11T15:30:55+05:30,Gujarat,2–4 Hours,Instagram,6–7 Hours,ChatGPT,Walking,Non-Vegetarian,Music,Walking,Data Science & Artificial Intelligence,kioid9l0r4xkmwby5lq7
+R-0034,2026-11-11T15:30:55+05:30,Gujarat,2–4 Hours,WhatsApp,7–8 Hours,Microsoft Copilot,Cycling,Vegan,Gaming,Bicycle,Finance & Banking,kl0b7qct0f9mwby7atf
+R-0035,2026-11-11T15:31:02+05:30,Kerala,2–4 Hours,Instagram,5–6 Hours,ChatGPT,No Regular Physical Activity,Non-Vegetarian,Music,Two-Wheeler,Data Science & Artificial Intelligence,kk4x9uowxyxgmwby4v6y
+R-0036,2026-11-11T15:31:07+05:30,Kerala,1–2 Hours,Instagram,5–6 Hours,ChatGPT,Sports,Non-Vegetarian,Gaming,Metro,IT & Software Development,k4phnuue5axlmwby45e4
+R-0037,2026-11-11T15:31:12+05:30,Uttar Pradesh,1–2 Hours,Instagram,5–6 Hours,ChatGPT,Running,Eggetarian,Movies,Two-Wheeler,Data Science & Artificial Intelligence,kmqo7vh9hn5mwby5nm1
+R-0038,2026-11-11T15:31:16+05:30,Goa,2–4 Hours,WhatsApp,5–6 Hours,ChatGPT,Running,Non-Vegetarian,Gaming,Metro,Data Science & Artificial Intelligence,kba6s30it8nmwby78jt
+R-0039,2026-11-11T15:31:18+05:30,Tamil Nadu,2–4 Hours,Instagram,6–7 Hours,Claude,Gym / Workout,Non-Vegetarian,Movies,Two-Wheeler,Entrepreneurship,k0opny91nstahmwby6y72
+R-0040,2026-11-11T15:31:37+05:30,Tamil Nadu,2–4 Hours,Instagram,5–6 Hours,Claude,Sports,Non-Vegetarian,Music,Walking,Entrepreneurship,k36w7zonft3emwby74mx
+R-0041,2026-11-11T15:31:44+05:30,Kerala,1–2 Hours,Instagram,6–7 Hours,Claude,Walking,Non-Vegetarian,Reading,Walking,Entrepreneurship,k4b6vj5qq209mwby5jw7
+R-0042,2026-11-11T15:32:10+05:30,Maharashtra,4–6 Hours,Facebook,6–7 Hours,Claude,Running,Vegan,Music,Metro,Business & Management,kzv1osdph8ummwby833i
+R-0043,2026-11-11T15:32:11+05:30,Karnataka,Above 6 Hours,Instagram,Below 5 Hours,ChatGPT,No Regular Physical Activity,Non-Vegetarian,Web Series,Two-Wheeler,Entrepreneurship,ko7wap56ey1gmwby7ro9
+R-0044,2026-11-11T15:32:23+05:30,Karnataka,2–4 Hours,Instagram,5–6 Hours,ChatGPT,Walking,Non-Vegetarian,Web Series,Metro,Business & Management,ke6ilfd7hj8gmwby3vrs
+R-0045,2026-11-11T15:32:30+05:30,Tamil Nadu,1–2 Hours,Instagram,7–8 Hours,ChatGPT,Sports,Non-Vegetarian,Gaming,Walking,Creative Fields,ky0f3cgryd09mwby8dpa
+R-0046,2026-11-11T15:32:31+05:30,Kerala,4–6 Hours,Instagram,Above 8 Hours,ChatGPT,Gym / Workout,Eggetarian,Gaming,Car,Other,kouqsqiq7aanmwby93g5
+R-0047,2026-11-11T15:32:45+05:30,Himachal Pradesh,1–2 Hours,YouTube,Above 8 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Reading,Metro,IT & Software Development,k9kzmajvvbqjmwby8ze3
+R-0048,2026-11-11T15:33:06+05:30,Tamil Nadu,4–6 Hours,WhatsApp,7–8 Hours,ChatGPT,Gym / Workout,Non-Vegetarian,Social Media,Walking,Data Science & Artificial Intelligence,kv6s6wa11r3mwby75i5
+R-0049,2026-11-11T15:33:11+05:30,Karnataka,2–4 Hours,Facebook,6–7 Hours,Google Gemini,Walking,Non-Vegetarian,Movies,Two-Wheeler,Government Services,k7vvosb7c2b7mwby8j9j
+R-0050,2026-11-11T15:33:23+05:30,Karnataka,4–6 Hours,Instagram,6–7 Hours,ChatGPT,Walking,Non-Vegetarian,Web Series,Walking,Data Science & Artificial Intelligence,ka6gnm2astbmwby8dly
+R-0051,2026-11-11T15:33:27+05:30,Kerala,1–2 Hours,YouTube,5–6 Hours,Google Gemini,Walking,Non-Vegetarian,Music,Walking,Data Science & Artificial Intelligence,ksfk1yu4xh0pmwby9iw2
+R-0052,2026-11-11T15:33:32+05:30,Jammu and Kashmir,4–6 Hours,YouTube,6–7 Hours,Other,Running,Non-Vegetarian,Gaming,Metro,Business & Management,k96ymtf7wn3amwbyaib4
+R-0053,2026-11-11T15:33:50+05:30,Tamil Nadu,2–4 Hours,YouTube,7–8 Hours,Perplexity,Sports,Non-Vegetarian,Social Media,Two-Wheeler,Data Science & Artificial Intelligence,kqv6hcpwlaldmwbya353
+R-0054,2026-11-11T15:34:12+05:30,Bihar,Below 1 Hour,Other,Below 5 Hours,Don't Use AI,No Regular Physical Activity,Other,Other,Other,Other,kb449525uzzlmwbybfaq
+R-0055,2026-11-11T15:34:17+05:30,Karnataka,1–2 Hours,YouTube,7–8 Hours,Google Gemini,Sports,Non-Vegetarian,Web Series,Car,IT & Software Development,ko6v9932nsxmmwbyazal
+R-0056,2026-11-11T15:34:50+05:30,West Bengal,2–4 Hours,WhatsApp,6–7 Hours,ChatGPT,Walking,Vegetarian,Music,Walking,Entrepreneurship,k8lae6646q4wmwby6254
+R-0057,2026-11-11T15:35:29+05:30,Andaman and Nicobar Islands,4–6 Hours,Facebook,7–8 Hours,Google Gemini,Yoga,Vegan,Gaming,Metro,Business & Management,kgc3n07htpcmwbyafm7
+R-0058,2026-11-11T15:35:39+05:30,Dadra and Nagar Haveli and Daman and Diu,Above 6 Hours,YouTube,5–6 Hours,Perplexity,Sports,Non-Vegetarian,Gaming,Two-Wheeler,Entrepreneurship,kcofpltcoht9mwbyawpr
+R-0059,2026-11-11T15:36:06+05:30,Goa,4–6 Hours,WhatsApp,Below 5 Hours,Microsoft Copilot,Yoga,Eggetarian,Music,Bicycle,Finance & Banking,kkwi15ittaqmwbyceff
+R-0060,2026-11-11T15:38:21+05:30,Karnataka,2–4 Hours,Snapchat,6–7 Hours,Claude,Gym / Workout,Eggetarian,Web Series,Walking,Research & Academia,k8pri0jvk3k2mwby6jhz
+R-0061,2026-11-11T15:54:45+05:30,Kerala,1–2 Hours,Instagram,6–7 Hours,Claude,Gym / Workout,Non-Vegetarian,Gaming,Walking,Data Science & Artificial Intelligence,23c59c68-3db4-4c76-aa45-4f4cecf0a374
+R-0062,2026-11-11T16:00:47+05:30,Tamil Nadu,2–4 Hours,YouTube,Above 8 Hours,ChatGPT,Sports,Non-Vegetarian,Movies,Walking,Research & Academia,5b1dc088-41ba-43dc-8515-9d3dd0d50a15

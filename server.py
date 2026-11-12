@@ -713,7 +713,11 @@ def lan_ip() -> str | None:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Campus Pulse live survey dashboard")
     ap.add_argument("--host", default="0.0.0.0", help="bind address (default 0.0.0.0 = reachable on the LAN)")
-    ap.add_argument("--port", type=int, default=8000)
+    ap.add_argument(
+    "--port",
+    type=int,
+    default=int(os.environ.get("PORT", "10000"))
+)
     ap.add_argument("--trust-lan", action="store_true", help="treat devices on your private Wi-Fi/LAN as admins (dashboard access)")
     ap.add_argument("--regen-demo", action="store_true", help="rebuild demo_responses.csv")
     args = ap.parse_args()
